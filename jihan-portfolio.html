@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jihan Sajidah — Kreator Konten & Strategi Pemasaran</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;--surface:#111118;--surface2:#18181f;
+  --border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#c850c0;--accent3:#ffbd59;
+  --text:#f0eeff;--muted:#8888aa;
+  --glow1:rgba(255,107,53,0.15);--glow2:rgba(200,80,192,0.12);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.028;pointer-events:none;z-index:1000}
+
+/* BLOBS */
+.blob{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;animation:blobFloat 12s ease-in-out infinite}
+.blob1{width:500px;height:500px;background:var(--glow1);top:-100px;right:-100px}
+.blob2{width:400px;height:400px;background:var(--glow2);bottom:10%;left:-80px;animation-delay:-6s}
+.blob3{width:300px;height:300px;background:rgba(255,189,89,.07);top:40%;right:10%;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(30px) scale(1.05)}}
+
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:2}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+@media(max-width:600px){.nav-links{display:none}}
+
+/* ── HERO ── */
+/* Desktop: full viewport height, vertically centered */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:5rem 0 4rem;
+}
+/* Mobile: shrinks to fit content — NO fixed height */
+@media(max-width:768px){
+  .hero{
+    min-height:unset;
+    height:auto;
+    padding:5.5rem 0 3rem;
+    align-items:flex-start;
+  }
+}
+
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:100%}
+@media(max-width:768px){
+  .hero-grid{display:flex;flex-direction:column;gap:2rem}
+  .hero-visual{order:-1}
+}
+
+/* FOTO */
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeUp .8s ease .2s both}
+.avatar-ring{position:relative;width:280px;height:280px;flex-shrink:0}
+@media(max-width:768px){.avatar-ring{width:160px;height:160px}}
+.avatar-ring::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(from 0deg,var(--accent1),var(--accent2),var(--accent3),var(--accent1));animation:spin 6s linear infinite}
+.avatar-ring::after{content:'';position:absolute;inset:2px;border-radius:50%;background:var(--bg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar-inner{position:absolute;inset:8px;border-radius:50%;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;z-index:2;overflow:hidden}
+.avatar-photo{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block}
+.avatar-placeholder{font-family:'Syne',sans-serif;font-size:4rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Floating cards: desktop only */
+.floating-cards{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none}
+.fcard{position:absolute;background:rgba(17,17,24,.92);border:1px solid var(--border);backdrop-filter:blur(10px);border-radius:12px;padding:.65rem .9rem;display:flex;align-items:center;gap:.6rem;animation:floatCard 4s ease-in-out infinite;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.fcard:nth-child(1){top:0;right:-70px}
+.fcard:nth-child(2){bottom:10%;left:-80px;animation-delay:-2s}
+.fcard:nth-child(3){top:42%;right:-90px;animation-delay:-1s}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fcard-icon{font-size:1rem}
+.fcard-label{font-size:.66rem;color:var(--muted)}
+.fcard-value{font-size:.8rem;font-weight:600;color:var(--text)}
+@media(max-width:768px){.floating-cards{display:none}}
+
+/* HERO TEXT */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent1);border:1px solid rgba(255,107,53,.3);padding:.3rem .8rem;border-radius:100px;margin-bottom:1.2rem;animation:fadeUp .8s ease both}
+.hero-eyebrow .dot{width:6px;height:6px;background:var(--accent1);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,6vw,5rem);line-height:1;letter-spacing:-.03em;margin-bottom:.5rem;animation:fadeUp .8s ease .1s both}
+.hero-name .grad{background:linear-gradient(135deg,var(--accent1) 0%,var(--accent2) 60%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-title{font-size:.85rem;font-weight:300;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.2rem;animation:fadeUp .8s ease .2s both}
+.hero-bio{font-size:.95rem;color:#b0afc8;line-height:1.75;margin-bottom:1.6rem;animation:fadeUp .8s ease .3s both}
+.hero-contacts{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.6rem;animation:fadeUp .8s ease .35s both}
+.contact-item{display:flex;align-items:center;gap:.65rem;font-size:.83rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.contact-item:hover{color:var(--text)}
+.contact-icon{width:25px;height:25px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;animation:fadeUp .8s ease .4s both}
+.btn-primary{padding:.7rem 1.6rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:white;border-radius:12px;text-decoration:none;font-weight:600;font-size:.83rem;letter-spacing:.04em;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(255,107,53,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,107,53,.4)}
+.btn-outline{padding:.7rem 1.6rem;border:1px solid var(--border);color:var(--muted);border-radius:12px;text-decoration:none;font-weight:500;font-size:.83rem;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--accent1);color:var(--accent1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* ── SECTIONS ── */
+section{padding:5rem 0;position:relative;z-index:2}
+@media(max-width:768px){section{padding:3.5rem 0}}
+.divider{width:100%;height:1px;background:var(--border);position:relative;z-index:2}
+.section-label{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent1);font-weight:600;margin-bottom:.8rem}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--accent1)}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:2.5rem}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--border);transition:background .3s}
+.exp-item:hover{background:rgba(255,107,53,.02)}
+@media(max-width:600px){.exp-item{grid-template-columns:1fr;gap:.5rem;padding:1.5rem 0}}
+.exp-period{font-size:.74rem;color:var(--muted);margin-bottom:.4rem}
+.exp-company{font-size:.8rem;font-weight:600;color:var(--accent1)}
+.exp-role{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.8rem}
+.exp-tasks{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.exp-tasks li{display:flex;align-items:flex-start;gap:.7rem;font-size:.84rem;color:#9998bb;line-height:1.55}
+.exp-tasks li::before{content:'→';color:var(--accent1);flex-shrink:0;opacity:.7}
+.tag-highlight{display:inline-block;background:rgba(255,107,53,.12);color:var(--accent1);font-size:.72rem;padding:.1rem .55rem;border-radius:6px;font-weight:600;border:1px solid rgba(255,107,53,.2);margin-left:.3rem}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:768px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.skills-grid{grid-template-columns:1fr}}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.4rem;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,53,.06),transparent);opacity:0;transition:opacity .3s}
+.skill-card:hover::before{opacity:1}
+.skill-card:hover{transform:translateY(-4px);border-color:rgba(255,107,53,.3);box-shadow:0 12px 40px rgba(255,107,53,.08)}
+.skill-icon{font-size:1.5rem;margin-bottom:.6rem;display:block}
+.skill-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:.3rem}
+.skill-desc{font-size:.77rem;color:var(--muted);line-height:1.5}
+
+/* ── TRAINING ── */
+.training-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.9rem}
+@media(max-width:480px){.training-grid{grid-template-columns:1fr}}
+.training-pill{background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:.85rem 1rem;font-size:.81rem;color:var(--muted);transition:border-color .2s,color .2s,transform .2s;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.training-pill:hover{border-color:rgba(200,80,192,.4);color:var(--text);transform:translateY(-2px)}
+.tp-dot{width:6px;height:6px;background:var(--accent2);border-radius:50%;flex-shrink:0}
+.tp-src{font-size:.68rem;color:#555;margin-left:auto}
+
+/* ── EDUCATION + LANGUAGE ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+.edu-card,.lang-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.6rem}
+.edu-degree{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.edu-uni{font-size:.83rem;color:var(--muted)}
+.edu-period{font-size:.75rem;color:var(--accent3);font-weight:600;margin-top:.4rem;font-family:'Syne',sans-serif}
+.lang-item{margin-bottom:1.2rem}
+.lang-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
+.lang-name{font-weight:600;font-size:.88rem;flex:1}
+.lang-level{font-size:.7rem;color:var(--accent3);background:rgba(255,189,89,.1);border:1px solid rgba(255,189,89,.2);border-radius:6px;padding:.12rem .55rem;font-weight:600}
+.lang-bar{width:100%;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.lang-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent1),var(--accent2));animation:fillBar 1.5s ease-out both}
+@keyframes fillBar{from{width:0 !important}}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:3rem 0;text-align:center;position:relative;z-index:2}
+.footer-name{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.4rem}
+.footer-sub{font-size:.8rem;color:var(--muted)}
+.footer-contact{margin-top:1.2rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer-contact a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-contact a:hover{color:var(--accent1)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">JS ✦</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#skills">Keahlian</a></li>
+    <li><a href="#training">Pelatihan</a></li>
+    <li><a href="#education">Pendidikan</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- TEKS -->
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="dot"></span>Terbuka untuk Peluang Baru</div>
+        <h1 class="hero-name">Jihan<br><span class="grad">Sajidah</span></h1>
+        <p class="hero-title">Kreator Konten &middot; Strategi Media Sosial &middot; Live Host</p>
+        <p class="hero-bio">Memiliki kemampuan dalam bidang public speaking, algoritma media sosial, dan manajemen akun. Spesialis dalam mengelola akun secara organik dengan hasil yang terukur dan berdampak nyata.</p>
+        <div class="hero-contacts">
+          <a class="contact-item" href="tel:+6282111587434">
+            <div class="contact-icon">📞</div>+6282111587434
+          </a>
+          <a class="contact-item" href="mailto:Jihan.sajidah@ui.ac.id">
+            <div class="contact-icon">✉️</div>Jihan.sajidah@ui.ac.id
+          </a>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>Bogor, Jawa Barat
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="mailto:Jihan.sajidah@ui.ac.id" class="btn-primary">Hubungi Saya</a>
+          <a href="#experience" class="btn-outline">Lihat Portofolio</a>
+        </div>
+      </div>
+
+      <!-- FOTO -->
+      <div class="hero-visual">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <img class="avatar-photo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jihan Sajidah"
+              onerror="this.style.display='none';document.getElementById('av-fb').style.display='block'">
+            <div id="av-fb" class="avatar-placeholder" style="display:none">JS</div>
+          </div>
+        </div>
+        <div class="floating-cards">
+          <div class="fcard">
+            <div class="fcard-icon">📈</div>
+            <div><div class="fcard-label">Traffic Tumbuh</div><div class="fcard-value">+150%</div></div>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">🎙️</div>
+            <div><div class="fcard-label">Spesialisasi</div><div class="fcard-value">Live Streaming Host</div></div>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">🚀</div>
+            <div><div class="fcard-label">Pertumbuhan Akun</div><div class="fcard-value">+120% Organik</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PENGALAMAN -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Pengalaman Kerja</div>
+    <h2 class="section-title">Yang Telah<br><em style="font-style:normal;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Dicapai</em></h2>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">2024 &mdash; 2025</div>
+          <div class="exp-company">PT Grow Baby Indonesia</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Freelance Host Siaran Langsung</div>
+          <ul class="exp-tasks">
+            <li>Merancang dan menjalankan strategi pemasaran jangka pendek dan jangka panjang</li>
+            <li>Mengelola anggaran pemasaran dan memastikan efisiensi biaya dalam setiap kampanye</li>
+            <li>Menjalankan kampanye digital dengan peningkatan traffic <span class="tag-highlight">+150%</span></li>
+            <li>Membangun dan mengelola interaksi pembeli saat siaran langsung berlangsung</li>
+            <li>Melakukan proses penjualan menggunakan teknik public speaking saat live</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Jan &mdash; Okt 2025</div>
+          <div class="exp-company">@namabayi.id</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Freelance Kreator Konten</div>
+          <ul class="exp-tasks">
+            <li>Merancang dan membuat rencana konten selama satu bulan penuh</li>
+            <li>Mencari dan menganalisis tren konten yang diminati audiens</li>
+            <li>Meningkatkan grafik dan performa akun secara organik</li>
+            <li>Meningkatkan daya tarik audiens untuk melakukan transaksi jasa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">Okt &mdash; Des 2025</div>
+          <div class="exp-company">@suaracewek.id</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Spesialis Media Sosial</div>
+          <ul class="exp-tasks">
+            <li>Mengembangkan strategi konten berbasis data yang berhasil meningkatkan pertumbuhan akun <span class="tag-highlight">+120%</span> dalam waktu singkat</li>
+            <li>Menganalisis konten dan mengelola seluruh ekosistem akun, termasuk interaksi komunitas (komentar/DM) untuk membangun loyalitas audiens</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="border-bottom:none">
+        <div class="exp-left">
+          <div class="exp-period">Apr 2026 &mdash; Sekarang</div>
+          <div class="exp-company">@hantar_transport</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Strategis Pemasaran</div>
+          <ul class="exp-tasks">
+            <li>Membuat rencana konten yang relevan dan diminati oleh audiens target</li>
+            <li>Mengembangkan strategi untuk meningkatkan pertumbuhan akun dan konversi pengguna aplikasi Hantar</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KEAHLIAN -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Kompetensi</div>
+    <h2 class="section-title">Keahlian<br><em style="font-style:normal;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Utama</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎙️</span>
+        <div class="skill-name">Public Speaking</div>
+        <div class="skill-desc">Komunikasi verbal yang kuat untuk siaran langsung dan presentasi produk secara persuasif.</div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📊</span>
+        <div class="skill-name">Strategi Konten</div>
+        <div class="skill-desc">Merancang rencana konten berbasis data dan algoritma untuk memaksimalkan jangkauan organik.</div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📱</span>
+        <div class="skill-name">Manajemen Media Sosial</div>
+        <div class="skill-desc">Pengelolaan ekosistem akun secara menyeluruh termasuk interaksi komunitas dan manajemen DM.</div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎯</span>
+        <div class="skill-name">Pemasaran Digital</div>
+        <div class="skill-desc">Menjalankan kampanye digital dengan manajemen anggaran yang efisien dan hasil yang terukur.</div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📸</span>
+        <div class="skill-name">Fotografi &amp; Videografi</div>
+        <div class="skill-desc">Produksi konten visual berkualitas tinggi untuk kebutuhan media sosial dan kampanye digital.</div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎨</span>
+        <div class="skill-name">Desain Kreatif</div>
+        <div class="skill-desc">Pembuatan konten visual menarik menggunakan Canva dan berbagai alat desain digital lainnya.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PELATIHAN -->
+<section id="training">
+  <div class="container">
+    <div class="section-label">Pelatihan</div>
+    <h2 class="section-title">Sertifikasi &amp;<br><em style="font-style:normal;background:linear-gradient(135deg,var(--accent3),var(--accent1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Pelatihan</em></h2>
+    <div class="training-grid">
+      <div class="training-pill reveal"><div class="tp-dot"></div>Public Speaking<span class="tp-src">@bicarapede</span></div>
+      <div class="training-pill reveal"><div class="tp-dot"></div>Pemasaran Digital &amp; Media Sosial<span class="tp-src">@sycacademy</span></div>
+      <div class="training-pill reveal"><div class="tp-dot"></div>Fotografi &amp; Videografi<span class="tp-src">@fahrulstudio</span></div>
+      <div class="training-pill reveal"><div class="tp-dot"></div>Desain Canva<span class="tp-src">@syammasfitria</span></div>
+      <div class="training-pill reveal"><div class="tp-dot"></div>Manajemen Bisnis<span class="tp-src">@wildannbm</span></div>
+      <div class="training-pill reveal"><div class="tp-dot"></div>Trading &amp; Investasi<span class="tp-src">@sahamtalk</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PENDIDIKAN & BAHASA -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Latar Belakang</div>
+    <h2 class="section-title">Pendidikan &amp;<br><em style="font-style:normal;background:linear-gradient(135deg,var(--accent2),var(--accent1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Bahasa</em></h2>
+    <div class="two-col">
+      <div class="edu-card reveal">
+        <div class="section-label" style="margin-bottom:1.2rem">🎓 Pendidikan</div>
+        <div class="edu-degree">S1 Sastra Daerah untuk Sastra Jawa</div>
+        <div class="edu-uni">Universitas Indonesia</div>
+        <div class="edu-period">2025 &mdash; Sekarang</div>
+      </div>
+      <div class="lang-card reveal">
+        <div class="section-label" style="margin-bottom:1.4rem">🌐 Kemampuan Bahasa</div>
+        <div class="lang-item">
+          <div class="lang-row">
+            <div class="lang-name">Bahasa Indonesia</div>
+            <div class="lang-level">Fasih (100%)</div>
+          </div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item" style="margin-bottom:0">
+          <div class="lang-row">
+            <div class="lang-name">Bahasa Inggris</div>
+            <div class="lang-level">Cukup Fasih (75%)</div>
+          </div>
+          <div class="lang-bar"><div class="lang-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-name">Jihan Sajidah</div>
+    <div class="footer-sub">Kreator Konten &middot; Strategi Media Sosial &middot; Host Siaran Langsung</div>
+    <div class="footer-contact">
+      <a href="tel:+6282111587434">+6282111587434</a>
+      <a href="mailto:Jihan.sajidah@ui.ac.id">Jihan.sajidah@ui.ac.id</a>
+      <span style="color:var(--muted)">Bogor, Jawa Barat</span>
+    </div>
+    <div style="margin-top:2rem;font-size:.7rem;color:#444">&copy; 2026 Jihan Sajidah. Hak cipta dilindungi.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
